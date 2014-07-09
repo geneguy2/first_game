@@ -8,6 +8,7 @@ preload: function() {
 game.load.image('player', 'assets/player.png');
 game.load.image('wallV', 'assets/wallVertical.png');
 game.load.image('wallH', 'assets/wallHorizontal.png');
+game.load.image('coin', 'assets/coin.png');
 
 },
 create: function() {
@@ -54,6 +55,22 @@ middleBottom.scale.setTo(1.5, 1);
 this.walls.setAll('body.immovable', true);
 
 this.createWorld();
+
+
+// Display the score
+this.scoreLabel = game.add.text(30, 30, 'score: 0',
+{ font: '18px Arial', fill: '#ffffff' });
+// Initialise the score variable
+this.score = 0;
+
+
+// Display the coin
+this.coin = game.add.sprite(60, 140, 'coin');
+// Add Arcade physics to the coin
+game.physics.arcade.enable(this.coin);
+// Set the anchor point of the coin to its center
+this.coin.anchor.setTo(0.5, 0.5);
+
 },
 update: function() {
 // This function is called 60 times per second
